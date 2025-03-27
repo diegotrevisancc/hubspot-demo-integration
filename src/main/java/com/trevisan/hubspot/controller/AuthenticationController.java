@@ -1,5 +1,6 @@
 package com.trevisan.hubspot.controller;
 
+import com.trevisan.hubspot.restmessages.TokenResponse;
 import com.trevisan.hubspot.service.interfaces.AuthenticationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,16 +21,12 @@ public class AuthenticationController {
     @GetMapping("/install")
     public ResponseEntity<String> getAuthenticationUrl() {
         String url = service.getAuthenticationUrl();
-
-        //todo: tratar erros
         return ResponseEntity.ok(url);
     }
 
     @GetMapping("/webhook/oauth")
-    public ResponseEntity<String> oAuthCallbackHandler(@RequestParam(required = true) String code) {
-        service.oAuthCallback(code);
-
-        //todo: arrumar esse retorno
-        return ResponseEntity.ok("");
+    public ResponseEntity<TokenResponse> oAuthCallbackHandler(@RequestParam(required = true) String code) {
+        TokenResponse tokenResponse = service.oAuthCallback(code);
+        return ResponseEntity.ok(tokenResponse);
     }
 }

@@ -1,7 +1,9 @@
 package com.trevisan.hubspot.service.interfaces;
 
+import com.trevisan.hubspot.restmessages.TokenResponse;
+
 public interface AuthenticationService {
     String getAuthenticationUrl();
 
-    void oAuthCallback(String code);
+    TokenResponse oAuthCallback(String code);
 }

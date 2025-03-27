@@ -48,14 +48,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @Override
-  public void oAuthCallback(String code) {
+  public TokenResponse oAuthCallback(String code) {
     logger.info("oAuth Webhook Request Received!");
     if (code == null || code.isEmpty()) {
       throw new InvalidResourceException("O código do webhook de autenticação está vazio!");
     }
 
     TokenRequest tokenRequest = new TokenRequest("authorization_code", clientId, clientSecret, webhookUrl, code);
-    TokenResponse tokenResponse = tokenService.fetchToken(tokenRequest);
+
+    return tokenService.fetchToken(tokenRequest);
   }
 
   //todo: tratar error com globalexceptionhandler
