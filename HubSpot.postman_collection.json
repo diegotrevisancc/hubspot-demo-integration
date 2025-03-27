@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "08ae1ec1-ffd8-4ee4-99a9-7246107e5b4a",
+		"name": "HubSpot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29896070"
+	},
+	"item": [
+		{
+			"name": "Get Installation Url",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/authentication/install",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authentication",
+						"install"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorize",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://app.hubspot.com/oauth/authorize?client_id=466f3bf5-1e8b-4c4c-9416-08519e0fadc3&scope=crm.objects.contacts.write%20crm.schemas.contacts.write%20oauth%20crm.schemas.contacts.read%20crm.objects.contacts.read&redirect_uri=http://localhost:8080/authentication/webhook/oauth",
+					"protocol": "https",
+					"host": [
+						"app",
+						"hubspot",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "466f3bf5-1e8b-4c4c-9416-08519e0fadc3"
+						},
+						{
+							"key": "scope",
+							"value": "crm.objects.contacts.write%20crm.schemas.contacts.write%20oauth%20crm.schemas.contacts.read%20crm.objects.contacts.read"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/authentication/webhook/oauth"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Contact",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "CLuCpMPdMhINAAEAQAAAASAAAAAAARjA3dMXIOvP0SUo6-DgBDIU6mq-DjwsielPcybEyMZ5k_5lPjk6MAAAAEEAAAAAAAAAAAAAAAAAgAAAAAAAAAAAACAAAAAAAOARAAAAAABAAIABAAAQAkIU8NS4ixYUC-Wa7COEaU6vLQ2enfJKA25hMVIAWgBgAGjrz9ElcAA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "CJz8qcndMhINAAEAQAAAASAAAAAAARi37dMXIOvP0SUo6-DgBDIU5_BU1-PXd17jNCtB85SaYYI9YqU6MAAAAEEAAAAAAAAAAAAAAAAAgAAAAAAAAAAAACAAAAAAAOARAAAAAABAAIABAAAQAkIUWvuhCjwqSovQiuDGYBSA3UaMDNRKA25hMVIAWgBgAGjrz9ElcAA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Teste6\",\n    \"last_name\": \"Weasley\",\n    \"email\": \"teste6@hogwarts.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/contact/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
