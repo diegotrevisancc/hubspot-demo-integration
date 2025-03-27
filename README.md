@@ -107,3 +107,37 @@ O login padrão é:
 - Após realizar o login execute a seguinte consulta e visualize um resultado similar
 ```select * from event_data```
 ![img_10.png](img_10.png)
+
+## 🚀 Decisões Técnicas e escolhas de dependências
+Na engenharia, é sempre um risco escolher uma depedência. Por isso tomei a liberdade
+de manter esse projeto com o mínimo de dependencias possiveis e não fiz uso de bibliotecas famosas
+como o Lombok, optando por usar Java Records.
+---
+
+
+- webflux: Fornece suporte para programação reativa usando o Spring WebFlux. É uma escolha
+interessante e segura quando trabalhamos com integrações através de requisições HTTPS no ambiente Spring.
+
+- jackson: É uma biblioteca leve, evita escrever muito boilerplate para fazer tarefas simples como deserializar um JSON em um objeto Java e vice versa.
+
+- H2: É um banco de dados em memória. Ideal para escrever testes e aplicações simples como essa, onde é usado apenas para salvar eventos.
+
+- JPA: Biblioteca famosa, simplifica operações CRUD e fornece várias abstrações relacionadas a db.
+
+- Flyway: Permite o versionamento e migração em banco de dados. Ideal pra usar em parceria com o H2, dessa forma não é necessário
+recriar tabelas todas as vezes que reinicializamos a aplicação
+
+- NGROK: Ferramenta simples e muito presente no meu dia-a-dia como desenvolvedor. É uma facilitadora ENORME quando você precisa
+expor um endpoint ou uma porta, como foi o caso do HubSpot.
+
+- Arquitetura de Camadas: Dispensa apresentações, é uma arquitetura popular e permite subir e evoluir projetos com uma organização e separação de responsabilidades
+extraordinárias em pequenas, médias e até algumas aplicações robustas.
+
+---
+
+### Possíveis Evoluções
+- Maior desacoplamento do código através de uso de Interfaces.
+- Testes unitários usando JUnit e Mockito para validar comportamentos e blindar a aplicação contra regressões.
+- Endpoint para fornecer refresh no access token do usuário
+- Adicionar mais exceções personalizas no projeto
+- Dockerização
