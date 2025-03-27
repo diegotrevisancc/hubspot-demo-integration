@@ -15,7 +15,7 @@ public class TokenServiceImpl implements TokenService {
   private final WebClient webClient;
 
   public TokenServiceImpl(WebClient.Builder webClientBuilder) {
-    this.webClient = webClientBuilder.baseUrl("https://api.hubapi.com123").build();
+    this.webClient = webClientBuilder.baseUrl("https://api.hubapi.com").build();
   }
 
   @Override
