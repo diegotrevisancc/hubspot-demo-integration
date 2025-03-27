@@ -43,7 +43,8 @@ public class ContactConverter {
         ev.attemptNumber(),
         ev.objectId(),
         ev.changeSource(),
-        ev.changeFlag()
+        ev.changeFlag(),
+        ev.sourceId()
     );
 
     return contactEvent;

@@ -11,5 +11,6 @@ public record CreateContactWebhookEvent(@JsonProperty("appId") Long appId,
                                         @JsonProperty("attemptNumber") Long attemptNumber,
                                         @JsonProperty("objectId") Long objectId,
                                         @JsonProperty("changeSource") String changeSource,
-                                        @JsonProperty("sourceId") String changeFlag) {
+                                        @JsonProperty("changeFlag") String changeFlag,
+                                        @JsonProperty("sourceId") String sourceId) {
 }

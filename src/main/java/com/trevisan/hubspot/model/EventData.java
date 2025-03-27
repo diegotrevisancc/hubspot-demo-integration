@@ -1,5 +1,6 @@
 package com.trevisan.hubspot.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -8,22 +9,44 @@ import jakarta.persistence.Table;
 @Table(name="event_data")
 public class EventData {
 
-  private Long appId;
   @Id
+  @Column(name = "event_id")
   private Long eventId;
+
+  @Column(name = "app_id")
+  private Long appId;
+
+  @Column(name = "subscription_id")
   private Long subscriptionId;
+
+  @Column(name = "portal_id")
   private Long portalId;
+
+  @Column(name = "occurred_at")
   private Long occurredAt;
+
+  @Column(name = "subscription_type")
   private String subscriptionType;
+
+  @Column(name = "attempt_number")
   private Long attemptNumber;
+
+  @Column(name = "object_id")
   private Long objectId;
+
+  @Column(name = "change_source")
   private String changeSource;
+
+  @Column(name = "change_flag")
   private String changeFlag;
+
+  @Column(name = "source_id")
+  private String sourceId;
 
   public EventData() {
   }
 
-  public EventData(Long appId, Long eventId, Long subscriptionId, Long portalId, Long occurredAt, String subscriptionType, Long attemptNumber, Long objectId, String changeSource, String changeFlag) {
+  public EventData(Long appId, Long eventId, Long subscriptionId, Long portalId, Long occurredAt, String subscriptionType, Long attemptNumber, Long objectId, String changeSource, String sourceId, String changeFlag) {
     this.appId = appId;
     this.eventId = eventId;
     this.subscriptionId = subscriptionId;
@@ -34,6 +57,7 @@ public class EventData {
     this.objectId = objectId;
     this.changeSource = changeSource;
     this.changeFlag = changeFlag;
+    this.sourceId = sourceId;
   }
 
   public Long getAppId() {

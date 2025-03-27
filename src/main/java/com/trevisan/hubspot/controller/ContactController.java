@@ -25,7 +25,6 @@ public class ContactController {
       @RequestHeader(name = "access_token", required = true) String token,
       @RequestBody CreateContactRequest request) {
     CreateContactResponse res = service.createContact(token, request);
-    // dando erro no GlobalExceptionHandler
     return ResponseEntity.status(HttpStatus.CREATED).body(res);
   }
 
