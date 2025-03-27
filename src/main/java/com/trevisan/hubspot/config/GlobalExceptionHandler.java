@@ -1,5 +1,6 @@
 package com.trevisan.hubspot.config;
 
+import com.trevisan.hubspot.exception.InvalidCRMResourceException;
 import com.trevisan.hubspot.exception.InvalidResourceException;
 import com.trevisan.hubspot.restmessages.BaseResponse;
 import org.springframework.http.HttpHeaders;
@@ -23,5 +24,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     return handleExceptionInternal(ex, body, new HttpHeaders()
     , HttpStatus.INTERNAL_SERVER_ERROR, req);
+  }
+
+  @ExceptionHandler(InvalidCRMResourceException.class)
+  private ResponseEntity<Object> handleInvalidCRMResourceException(InvalidResourceException ex, WebRequest req) {
+    logger.warning("Throwing InvalidCRMResourceException!");
+    BaseResponse body = new BaseResponse(ex.getCode() == null ? "500" : ex.getCode(), ex.getMessage());
+
+    return handleExceptionInternal(ex, body, new HttpHeaders()
+        , HttpStatus.INTERNAL_SERVER_ERROR, req);
   }
 }
